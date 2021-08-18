@@ -1,6 +1,7 @@
+const express=require("express");
 const mongoose = require("mongoose");
 try {
-  mongoose.connect("mongodb+srv://softinn:<Softinn765!>@cluster0.8yo49.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+  mongoose.connect("mongodb+srv://softinn:Softinn765!@cluster0.8yo49.mongodb.net/softinndb?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
