@@ -45,7 +45,7 @@ class Customer{
               let edit = await updateCustomer.exec();
               if (edit) {            
                 return res.json({
-                  success: "Customer detail updated successfully!",
+                  success: "2",
                   _id:data._id
                 });
               }
@@ -60,7 +60,7 @@ class Customer{
                 .save()
                 .then((data1) => {
                   return res.json({
-                    success: "Account create successfully. Please scan QR code",
+                    success: "1",
                     _id:data1._id
                   });
                 })
