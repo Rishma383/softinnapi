@@ -24,6 +24,8 @@ const tableRouter = require("./routes/tables");
 const restaurantRouter = require("./routes/restaurants");
 const staffRouter = require("./routes/staffs");
 const customerRouter = require("./routes/customers");
+const cartRouter = require("./routes/carts");
+const orderRouter = require("./routes/orders");
 // Import Auth middleware for check user login or not~
 const { loginCheck } = require("./middleware/auth");
 global.__basedir = __dirname;
@@ -67,6 +69,9 @@ app.use("/api/table",tableRouter);
 app.use("/api/restaurant",restaurantRouter);
 app.use("/api/staff",staffRouter);
 app.use("/api/customer",customerRouter);
+app.use("/api/cart",cartRouter);
+app.use("/api/order",orderRouter);
+
 app.use(express.static('public'));  
 app.use('/menuItem', express.static('menuItemImage'));
 // route included

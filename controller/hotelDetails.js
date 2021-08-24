@@ -63,7 +63,7 @@ class HotelDetail{
             }
           }
         ]);
-        
+        console.log(hotelres);
          if (hotelres) {
           return res.json({ hotelres });
         }
@@ -80,7 +80,7 @@ class HotelDetail{
     /*-- Update hotel address --*/
     async insertUpdateHotelAddress(req, res){
        let {loginId,countryCode,stateCode,hotelAddress,addressLine,cityName,postCode}= req.body;  
-       console.log(req.body); 
+      
        let error = {};
        if(!loginId ||!countryCode ||!stateCode ||!hotelAddress ||!cityName ||!postCode){
          error={
@@ -95,9 +95,10 @@ class HotelDetail{
          return res.json({ error });
        }
        else{
-        let client=await clientModel.findOne({loginId:id});
+        let client=await clientModel.findOne({loginId:loginId});
         let clientId=client._id;
         const data1 = await hotelDetailsModel.findOne({ clientId: clientId });
+       
         if(data1==null){
           let newHotelDetails=new hotelDetailsModel({
             clientId,
@@ -115,8 +116,8 @@ class HotelDetail{
             })
         }
         else{
-          // let obj=hotelDetailsModel.findOne({clientId:clientId});
-          let updateHotelAdd= hotelDetailsModel.findOneAndUpdate(clientId,{
+          
+          let updateHotelAdd= hotelDetailsModel.findByIdAndUpdate(data1._id,{
             clientId,
             countryCode,
             stateCode,
